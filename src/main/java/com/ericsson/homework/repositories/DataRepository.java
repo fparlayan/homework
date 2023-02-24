@@ -22,7 +22,9 @@ public class DataRepository {
 
     @PostConstruct
     public void loadDataFromFile() throws IOException {
-        String dataAsString  = FileUtil.readFile(dataPath);
+        String dataAsString = FileUtil.readFile(dataPath);
         data = new Gson().fromJson(dataAsString, Data.class);
+        if (data == null)
+            data = new Data();
     }
 }
